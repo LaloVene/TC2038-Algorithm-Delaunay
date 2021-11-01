@@ -1,16 +1,17 @@
 import random
 
 import cv2
-import dlib # pip install dlib fails
-# import imutils
-# import numpy as np
+import dlib
+import imutils
+import numpy as np
+import os
 
 ############################################
 ############# Face Detection ###############
 ############################################
 
 # Read image from image path
-img = cv2.imread('Luis.jpg', 1)
+img = cv2.imread(os.path.join(os.getcwd() ,'luis.jpeg'), 1)
     
 # set up the 68 point facial landmark detector
 detector = dlib.get_frontal_face_detector()
@@ -38,8 +39,12 @@ landmarks_list = []
 for i in range(0, landmarks.num_parts):
     landmarks_list.append((landmarks.part(i).x, landmarks.part(i).y))
 
-print(landmarks_list)
+# print(landmarks_list)
 
 ############################################
 ############  Export Landmarks #############
 ############################################
+with open('landmarks.txt', 'w') as f:
+    for point in landmarks_list:
+        f.write(f"{point[0]} {point[1]}\n")
+    
