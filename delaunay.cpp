@@ -6,6 +6,7 @@
 //SudoLeo 2010/7/20
 //CGAL required, GLUT required
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
 //#include <CGAL/Triangulation_euclidean_traits_xy_3.h>
