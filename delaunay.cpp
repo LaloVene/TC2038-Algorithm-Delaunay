@@ -70,6 +70,7 @@ void read_file() // Leer datos del conjunto de puntos de un archivo, utilizado d
     {
         vertices.push_back(Point(a, b));
     }
+    std::cout << "In total: " << vertices.size() << " points were read." << std::endl;
 
     fclose(f);
 }

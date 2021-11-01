@@ -5,7 +5,6 @@ Delaunay Algorithm for TC2038
 
  Make sure you have python3 and pip installed
 
-
  Create and activate virtual environment using virtualenv
  ```bash
  $ python -m venv python3-virtualenv
@@ -21,7 +20,15 @@ Delaunay Algorithm for TC2038
 
  ## Usage
 
-Run the python init script
+Run the python script
  ```bash
  $ python3 descriptorPoints.py
- ```
+ ```  
+This will create a ```landmarks.txt``` file with all points from image.
+
+ ## Running c++ file
+1. Make sure CGAL, OpenGL and GLUT are installed
+2. Run ```cmake -DCMAKE_BUILD_TYPE=Release .```
+3. Run ```make```
+4. Run ```./delaunay```
+
