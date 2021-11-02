@@ -1,6 +1,10 @@
 # TC2038-Algorithm-Delaunay
 Delaunay Algorithm for TC2038
 
+## Authors
+- Eduardo Venegas 
+- Pablo Blanco
+
 ## Installation
 
  Make sure you have python3 and pip installed
@@ -32,3 +36,8 @@ This will create a ```landmarks.txt``` file with all points from image.
 3. Run ```make```
 4. Run ```./delaunay```
 
+## Comments
+Se pudieron correr los dos archivos sin problemas, sin embargo dentro del archivo de c++ que hace la triangulación no se muestran de manera gráfica los resultados. Se imprime la cantidad de puntos que se leyeron, además de la cantidad de caras que en teoría serían dibujadas dentro de la pantalla gráfica pero no se muestran dibujadas.
+
+## Results
+<img src="results.png" />
