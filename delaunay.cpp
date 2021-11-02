@@ -34,7 +34,7 @@ void points_draw()
 
     std::vector<Point>::iterator iter;
     glColor3f(1.0, 1.0, 1.0);
-    glPointSize(5);
+    glPointSize(10);
     glBegin(GL_POINTS);
     for (iter = vertices.begin(); iter != vertices.end(); iter++)
         glVertex2i(iter->hx(), iter->hy());
@@ -70,7 +70,7 @@ void read_file() // Leer datos del conjunto de puntos de un archivo, utilizado d
     {
         vertices.push_back(Point(a, b));
     }
-    std::cout << "In total: " << vertices.size() << " points were read." << std::endl;
+    std::cout << "-> In total: " << vertices.size() << " points were read." << std::endl;
 
     fclose(f);
 }
@@ -96,6 +96,9 @@ void points_triangulation()
         glVertex2i(fit->vertex(2)->point().hx(), fit->vertex(2)->point().hy());
         glEnd();
     } // Complete el dibujo de la triangulación de Delaunay, diagrama de Delaunay
+
+    // Imprimir las caras de Delaunay
+    std::cout << "-> In total: " << dt.number_of_faces() << " faces were drawn (Delaunay)." << std::endl;
 
     Delaunay ::Edge_iterator eit; // Iterar sobre todos los bordes de Delaunay, dibujar un gráfico dual del gráfico de Delaunay, es decir, el gráfico de Voronoi
 
@@ -128,6 +131,7 @@ void points_triangulation()
     glutSwapBuffers();
 
     tri_state = 1; // triangulación completa, establecer el estado en 1
+    std::cout << "\nPROGRAM STATE: Tiangulation done. [tri_state: " << tri_state << "]" << std::endl;
 }
 
 void display(void)
@@ -160,12 +164,19 @@ void mouse(int button, int state, int x, int y)
     if (button == GLUT_LEFT_BUTTON && state == GLUT_UP)
     {
         if (tri_state == 1)
+        {
             points_clear();
+        }
         else
         {
             //points_add_point(x,y);
+            std::cout << "\nPROGRAM STATE: Reading file" << std::endl;
             read_file();
+            std::cout << "\nPROGRAM STATE: Doing triangulation" << std::endl;
+            points_triangulation();
+            std::cout << "\nPROGRAM STATE: Drawing points" << std::endl;
             points_draw();
+            std::cout << "\nPROGRAM STATE: Points drawn" << std::endl;
         }
     }
     if (button == GLUT_RIGHT_BUTTON && state == GLUT_UP)
